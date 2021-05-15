@@ -1,0 +1,64 @@
+@import '/src/styles/base.scss';
+
+#register-form {
+  width: 60%;
+
+  margin: 0.5rem 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+#register-form span {
+  text-align: center;
+  font-size: 3rem;
+
+  margin-bottom: 3rem;
+}
+
+.input-field {
+  width: 60%;
+
+  color: $color-inputs;
+  background-color: transparent;
+
+  border: 0;
+  border-bottom: 2px solid $color-lines;
+
+  padding-bottom: 1rem;
+
+  text-align: center;
+
+  margin: 2rem 0;
+}
+
+.input-field:focus {
+  outline: none;
+
+  .input-field::placeholder {
+    color: transparent;
+  }
+}
+
+.input-field::placeholder {
+  color: $color-placeholders;
+}
+
+.button {
+  border: 0;
+  background-color: transparent;
+
+  color: $color-text-button;
+
+  margin-top: 4rem;
+
+  transition: 0.2s;
+
+  cursor: pointer;
+}
+
+.button:hover {
+  color: $color-text-button-hover;
+}
