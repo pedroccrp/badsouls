@@ -10,6 +10,7 @@ import './styles/global.scss';
 
 import Header from 'components/Header';
 
+import Home from 'pages/Home';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
 
@@ -21,9 +22,7 @@ function App() {
         <Switch>
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
-          <Route path='/'>
-            <Redirect to='/login' />
-          </Route>
+          <Route path='/' component={Home} />
         </Switch>
       </div>
     </Router>
