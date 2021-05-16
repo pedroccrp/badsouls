@@ -146,15 +146,8 @@ const Login = () => {
         onFocus={e => (e.target.placeholder = '')}
         onBlur={e => (e.target.placeholder = placeholderText.password)}
       />
-      <div className='button-container'>
-        <input
-          className='button'
-          type='button'
-          value='register'
-          onClick={e => handleRegister()}
-        />
-        <input className='button' type='button' value='login' />
-      </div>
+
+      <input className='button' type='button' value='login' />
     </form>
   );
 };
