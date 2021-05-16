@@ -2,6 +2,8 @@ import React from 'react';
 
 import isEmail from 'validator/lib/isEmail';
 
+import Button from 'components/Button';
+
 import './index.scss';
 
 const Register = () => {
@@ -9,6 +11,14 @@ const Register = () => {
     email: 'email',
     username: 'username',
     password: 'password',
+  };
+
+  const handleRegister = (
+    e: React.MouseEvent<HTMLInputElement, MouseEvent>,
+  ) => {
+    e.preventDefault();
+
+    // TODO: Implement register function
   };
 
   return (
@@ -35,8 +45,7 @@ const Register = () => {
         onFocus={e => (e.target.placeholder = '')}
         onBlur={e => (e.target.placeholder = placeholderText.password)}
       />
-
-      <input className='button' type='button' value='register' />
+      <Button value='register' onClick={handleRegister} />
     </form>
   );
 };

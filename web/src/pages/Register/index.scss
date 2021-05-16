@@ -3,8 +3,6 @@
 #register-form {
   width: 60%;
 
-  margin: 0.5rem 0;
-
   display: flex;
   flex-direction: column;
 
@@ -47,18 +45,5 @@
 }
 
 .button {
-  border: 0;
-  background-color: transparent;
-
-  color: $color-text-button;
-
   margin-top: 4rem;
-
-  transition: 0.2s;
-
-  cursor: pointer;
-}
-
-.button:hover {
-  color: $color-text-button-hover;
 }

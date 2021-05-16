@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import isEmail from 'validator/lib/isEmail';
 
@@ -67,6 +68,7 @@ const reducer = (state: State, action: Action): State => {
 
 const Login = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const history = useHistory();
 
   useEffect(() => {
     if (!state.email.trim() || !state.password.trim()) {
@@ -94,6 +96,10 @@ const Login = () => {
       type: 'loginSuccess',
       payload: 'Login Successfully',
     });
+  };
+
+  const handleRegister = () => {
+    history.push('register');
   };
 
   const handleKeyPress = (event: React.KeyboardEvent) => {
@@ -141,7 +147,12 @@ const Login = () => {
         onBlur={e => (e.target.placeholder = placeholderText.password)}
       />
       <div className='button-container'>
-        <input className='button' type='button' value='register' />
+        <input
+          className='button'
+          type='button'
+          value='register'
+          onClick={e => handleRegister()}
+        />
         <input className='button' type='button' value='login' />
       </div>
     </form>
