@@ -1,0 +1,32 @@
+#header-container {
+  width: 100%;
+
+  // height: min-content;
+}
+
+.content {
+  display: flex;
+
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding-top: 1.5rem;
+}
+
+.left-side,
+.right-side {
+  display: flex;
+  flex-direction: row;
+
+  .button {
+    margin: 0 1rem;
+  }
+}
+
+.left-side {
+  justify-content: left;
+}
+
+.right-side {
+  justify-content: right;
+}
