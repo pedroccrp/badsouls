@@ -1,0 +1,16 @@
+@import '/src/styles/base.scss';
+
+.button {
+  border: 0;
+  background-color: transparent;
+
+  color: $color-text-button;
+
+  transition: 0.2s;
+
+  cursor: pointer;
+}
+
+.button:hover {
+  color: $color-text-button-hover;
+}
