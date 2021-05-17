@@ -37,11 +37,13 @@ const reducer = (state: State, action: Action): State => {
     case 'setEmail':
       return {
         ...state,
+        isError: false,
         email: action.payload,
       };
     case 'setPassword':
       return {
         ...state,
+        isError: false,
         password: action.payload,
       };
     case 'setIsButtonDisabled':
@@ -101,10 +103,6 @@ const Login = () => {
     });
   };
 
-  const handleRegister = () => {
-    history.push('register');
-  };
-
   const handleKeyPress = (event: React.KeyboardEvent) => {
     if (event.keyCode === 13 || event.which === 13) {
       state.isButtonDisabled || handleLogin();
@@ -134,12 +132,24 @@ const Login = () => {
 
   return (
     <form id='login-form' autoComplete='off'>
-      <span>Login</span>
+      <span className='title'>Login</span>
 
-      <InputText type='email' placeholder={placeholderText.email} />
-      <InputText type='password' placeholder={placeholderText.password} />
+      <InputText
+        type='email'
+        placeholder={placeholderText.email}
+        handleChange={handleEmailChange}
+      />
+      <InputText
+        type='password'
+        placeholder={placeholderText.password}
+        handleChange={handlePasswordChange}
+      />
 
-      <Button value='login' />
+      <Button
+        value='login'
+        isDisabled={state.isButtonDisabled}
+        onClick={handleLogin}
+      />
     </form>
   );
 };
