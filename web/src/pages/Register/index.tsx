@@ -1,8 +1,7 @@
 import React from 'react';
 
-import isEmail from 'validator/lib/isEmail';
-
 import Button from 'components/Button';
+import InputText from 'components/InputText';
 
 import './index.scss';
 
@@ -24,27 +23,9 @@ const Register = () => {
   return (
     <form id='register-form' autoComplete='off'>
       <span>Register</span>
-      <input
-        className='input-field'
-        type='email'
-        placeholder={placeholderText.email}
-        onFocus={e => (e.target.placeholder = '')}
-        onBlur={e => (e.target.placeholder = placeholderText.email)}
-      />
-      <input
-        className='input-field'
-        type='username'
-        placeholder={placeholderText.username}
-        onFocus={e => (e.target.placeholder = '')}
-        onBlur={e => (e.target.placeholder = placeholderText.username)}
-      />
-      <input
-        className='input-field'
-        type='password'
-        placeholder={placeholderText.password}
-        onFocus={e => (e.target.placeholder = '')}
-        onBlur={e => (e.target.placeholder = placeholderText.password)}
-      />
+      <InputText type='email' placeholder={placeholderText.email} />
+      <InputText type='username' placeholder={placeholderText.username} />
+      <InputText type='password' placeholder={placeholderText.password} />
       <Button value='register' onClick={handleRegister} />
     </form>
   );

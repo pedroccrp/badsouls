@@ -3,6 +3,9 @@ import { useHistory } from 'react-router-dom';
 
 import isEmail from 'validator/lib/isEmail';
 
+import Button from 'components/Button';
+import InputText from 'components/InputText';
+
 import './index.scss';
 
 type State = {
@@ -132,22 +135,11 @@ const Login = () => {
   return (
     <form id='login-form' autoComplete='off'>
       <span>Login</span>
-      <input
-        className='input-field'
-        type='text'
-        placeholder={placeholderText.email}
-        onFocus={e => (e.target.placeholder = '')}
-        onBlur={e => (e.target.placeholder = placeholderText.email)}
-      />
-      <input
-        className='input-field'
-        type='password'
-        placeholder={placeholderText.password}
-        onFocus={e => (e.target.placeholder = '')}
-        onBlur={e => (e.target.placeholder = placeholderText.password)}
-      />
 
-      <input className='button' type='button' value='login' />
+      <InputText type='email' placeholder={placeholderText.email} />
+      <InputText type='password' placeholder={placeholderText.password} />
+
+      <Button value='login' />
     </form>
   );
 };

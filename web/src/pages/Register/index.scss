@@ -17,31 +17,8 @@
 }
 
 .input-field {
-  width: 60%;
-
-  color: $color-inputs;
-  background-color: transparent;
-
-  border: 0;
-  border-bottom: 2px solid $color-lines;
-
-  padding-bottom: 1rem;
-
-  text-align: center;
-
   margin: 2rem 0;
-}
-
-.input-field:focus {
-  outline: none;
-
-  .input-field::placeholder {
-    color: transparent;
-  }
-}
-
-.input-field::placeholder {
-  color: $color-placeholders;
+  padding-bottom: 1rem;
 }
 
 .button {
