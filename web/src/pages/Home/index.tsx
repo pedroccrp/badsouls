@@ -7,7 +7,8 @@ const Home = () => {
     <div className='page-container'>
       <h1 id='title'>Welcome to Bad Souls</h1>
       <p>
-        This tool will help both Game Master and Player during their adventures.
+        This tool will help both Game Master and Players during their
+        adventures.
       </p>
       <p>Some of the features include:</p>
       <ul>
