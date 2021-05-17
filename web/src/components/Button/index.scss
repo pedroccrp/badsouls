@@ -4,13 +4,25 @@
   border: 0;
   background-color: transparent;
 
-  color: $color-text-button;
-
   transition: 0.2s;
+}
+
+.button:enabled {
+  color: $color-text-button;
 
   cursor: pointer;
 }
 
-.button:hover {
+.button:disabled {
+  color: $color-text-button-disabled;
+
+  cursor: default;
+}
+
+.button:hover:enabled {
   color: $color-text-button-hover;
+}
+
+.button:hover:disabled {
+  color: $color-text-button-disabled;
 }
