@@ -1,5 +1,17 @@
-import app from './app';
+import dotenv from 'dotenv';
 
-const port = process.env.PORT || 5000;
+import app from './src/app';
+import database from './src/database';
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+dotenv.config({
+  path: './src/.env',
+});
+
+database.connect();
+
+const HOST = process.env.HOST || '0.0.0.0';
+const PORT = process.env.PORT || '5000';
+
+app.listen(parseInt(PORT), HOST, () =>
+  console.log(`[server] listening on port ${PORT}`),
+);
