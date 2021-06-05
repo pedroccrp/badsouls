@@ -1,5 +1,4 @@
 import React, { useReducer, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import isEmail from 'validator/lib/isEmail';
 
@@ -73,7 +72,6 @@ const reducer = (state: State, action: Action): State => {
 
 const Login = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const history = useHistory();
 
   useEffect(() => {
     if (!state.email.trim() || !state.password.trim()) {
@@ -103,11 +101,11 @@ const Login = () => {
     });
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent) => {
-    if (event.keyCode === 13 || event.which === 13) {
-      state.isButtonDisabled || handleLogin();
-    }
-  };
+  // const handleKeyPress = (event: React.KeyboardEvent) => {
+  //   if (event.keyCode === 13 || event.which === 13) {
+  //     state.isButtonDisabled || handleLogin();
+  //   }
+  // };
 
   const handleEmailChange: React.ChangeEventHandler<HTMLInputElement> =
     event => {
@@ -135,18 +133,18 @@ const Login = () => {
       <span className='title'>Login</span>
 
       <InputText
-        type='email'
+        typeof='email'
         placeholder={placeholderText.email}
-        handleChange={handleEmailChange}
+        onChange={handleEmailChange}
       />
       <InputText
-        type='password'
+        typeof='password'
         placeholder={placeholderText.password}
-        handleChange={handlePasswordChange}
+        onChange={handlePasswordChange}
       />
 
       <Button
-        value='login'
+        defaultValue='login'
         isDisabled={state.isButtonDisabled}
         onClick={handleLogin}
       />
