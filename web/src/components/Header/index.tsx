@@ -15,13 +15,13 @@ const Header = () => {
     content = (
       <div className='content'>
         <div className='left-side'>
-          <Button value='Home' />
-          <Button value='Characters' />
-          <Button value='Adventures' />
+          <Button defaultValue='Home' />
+          <Button defaultValue='Characters' />
+          <Button defaultValue='Adventures' />
         </div>
         <div className='right-side'>
-          <Button value='Logout' />
-          <Button value='Account' />
+          <Button defaultValue='Logout' />
+          <Button defaultValue='Account' />
         </div>
       </div>
     );
@@ -29,11 +29,14 @@ const Header = () => {
     content = (
       <div className='content'>
         <div className='left-side'>
-          <Button value='Home' onClick={e => history.push('/')} />
+          <Button defaultValue='Home' onClick={e => history.push('/')} />
         </div>
         <div className='right-side'>
-          <Button value='Register' onClick={e => history.push('/register')} />
-          <Button value='Login' onClick={e => history.push('/login')} />
+          <Button
+            defaultValue='Register'
+            onClick={e => history.push('/register')}
+          />
+          <Button defaultValue='Login' onClick={e => history.push('/login')} />
         </div>
       </div>
     );
