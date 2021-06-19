@@ -36,7 +36,7 @@ const registerUser = async (req: Request, res: Response) => {
     return respondWithReply(res, reply);
   }
 
-  if (!userService.create(userData)) {
+  if (!(await userService.create(userData))) {
     reply = {
       status: 500,
       data: {
