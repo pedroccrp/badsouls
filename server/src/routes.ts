@@ -4,6 +4,8 @@ import loginRoute from './routes/login';
 import registerRoute from './routes/register';
 import swaggerRoute from './routes/swagger';
 
+import authMiddleware from './middlewares/auth';
+
 const routes = Router();
 
 routes.use('/login', loginRoute);
