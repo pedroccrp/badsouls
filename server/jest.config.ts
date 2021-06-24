@@ -6,6 +6,7 @@ const config: Config.InitialOptions = {
   transform: {
     '^.+.tsx?$': '<rootDir>/node_modules/ts-jest',
   },
+  testEnvironment: 'node',
 };
 
 export default config;
