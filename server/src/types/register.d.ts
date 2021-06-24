@@ -1,3 +1,9 @@
+export type RegisterRequestBody = {
+  email: string;
+  username: string;
+  password: string;
+};
+
 export type RegisterReplyData = {
   error: boolean;
   errorType:
@@ -7,6 +13,7 @@ export type RegisterReplyData = {
     | 'invalid-password'
     | 'used-credentials'
     | 'database-internal'
+    | 'server-internal'
     | '';
 };
 
