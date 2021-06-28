@@ -10,7 +10,7 @@ import {
   validateUsername,
 } from 'helpers/validate';
 
-import api from 'services/api';
+import RegisterApi from 'api/register';
 
 import Button from 'components/Button';
 import InputText from 'components/InputText';
@@ -18,7 +18,7 @@ import RegisterHelperText from 'components/RegisterHelperText';
 
 import { reducer } from './index.reducer';
 
-import type { ApiReplyData } from 'types/api.d';
+import type { RegisterData } from 'types/api.d';
 
 import './index.scss';
 
@@ -71,7 +71,7 @@ const Register = () => {
   }, [state.email, state.username, state.password]);
 
   const handleRegister = async () => {
-    const payload = {
+    const payload: RegisterData = {
       email: state.email,
       username: state.username,
       password: state.password,
@@ -80,8 +80,7 @@ const Register = () => {
     dispatch({ type: 'beginLoading' });
 
     try {
-      const { data } = await api.post('/register', payload);
-      const replyData: ApiReplyData = data;
+      const replyData = await RegisterApi.post(payload);
 
       dispatch({
         type: 'setReply',

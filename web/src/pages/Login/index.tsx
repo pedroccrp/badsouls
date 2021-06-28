@@ -1,6 +1,10 @@
 import React, { useReducer, useEffect } from 'react';
 
-import isEmail from 'validator/lib/isEmail';
+import auth from 'services/auth';
+
+import LoginApi from 'api/login';
+
+import type { LoginData } from 'types/api.d';
 
 import Button from 'components/Button';
 import InputText from 'components/InputText';
@@ -87,12 +91,25 @@ const Login = () => {
     });
   }, [state.email, state.password]);
 
-  const handleLogin = () => {
-    if (!isEmail(state.email)) {
-      return dispatch({
+  const handleLogin = async () => {
+    const payload: LoginData = {
+      email: state.email,
+      password: state.password,
+    };
+
+    const { error, errorType, token } = await LoginApi.post(payload);
+
+    if (error) {
+      dispatch({
         type: 'loginFailed',
-        payload: 'Incorrect email or password',
+        payload: errorType,
       });
+
+      return;
+    }
+
+    if (token) {
+      auth.storeToken(token);
     }
 
     dispatch({
