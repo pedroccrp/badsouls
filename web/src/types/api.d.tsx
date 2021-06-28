@@ -1,11 +1,21 @@
 export type ApiReplyData = {
   error: boolean;
-  errorType:
-    | 'missing-fields'
-    | 'invalid-email'
-    | 'invalid-username'
-    | 'invalid-password'
-    | 'used-credentials'
-    | 'database-internal'
-    | '';
+  errorType: string;
 };
+
+export type LoginData = {
+  email: string;
+  password: string;
+};
+
+export type LoginReply = {
+  token?: string;
+} & ApiReplyData;
+
+export type RegisterData = {
+  email: string;
+  username: string;
+  password: string;
+};
+
+export type RegisterReply = ApiReplyData;
