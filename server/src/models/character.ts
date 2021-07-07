@@ -3,7 +3,7 @@ import mongoose, { Schema, Document, FilterQuery, UpdateQuery } from 'mongoose';
 import type { CharacterAttribute } from '../types/character';
 
 export type CharacterData = {
-  owner: string;
+  ownerId: string;
   name: string;
   backstory: string;
   attributes: CharacterAttribute;
@@ -33,7 +33,7 @@ const CharacterSchema: Schema = new Schema(
       type: Schema.Types.Boolean,
       default: false,
     },
-    owner: {
+    ownerId: {
       type: Schema.Types.ObjectId,
       required: true,
     },

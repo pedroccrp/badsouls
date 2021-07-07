@@ -2,15 +2,19 @@ import { Router } from 'express';
 
 import loginRoute from './routes/login';
 import registerRoute from './routes/register';
+import characterRoute from './routes/character';
 import swaggerRoute from './routes/swagger';
-
-import authMiddleware from './middlewares/auth';
 
 const routes = Router();
 
-routes.use('/login', loginRoute);
-routes.use('/register', registerRoute);
+// Auth Related
+routes.use('/', loginRoute);
+routes.use('/', registerRoute);
 
-routes.use('/docs', swaggerRoute);
+// Data
+routes.use('/', characterRoute);
+
+// Docs
+routes.use('/', swaggerRoute);
 
 export default routes;
