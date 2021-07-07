@@ -1,0 +1,6 @@
+{
+  "ignore": ["node_modules"],
+  "watch": ["src", "yarn.lock"],
+  "exec": "ts-node -r tsconfig-paths/register server.ts",
+  "ext": "ts"
+}
