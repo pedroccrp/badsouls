@@ -1,7 +1,10 @@
 import React, { useReducer, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 
-import isEmail from 'validator/lib/isEmail';
+import auth from 'services/auth';
+
+import LoginApi from 'api/login';
+
+import type { LoginData } from 'types/api.d';
 
 import Button from 'components/Button';
 import InputText from 'components/InputText';
@@ -73,7 +76,6 @@ const reducer = (state: State, action: Action): State => {
 
 const Login = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const history = useHistory();
 
   useEffect(() => {
     if (!state.email.trim() || !state.password.trim()) {
@@ -89,12 +91,25 @@ const Login = () => {
     });
   }, [state.email, state.password]);
 
-  const handleLogin = () => {
-    if (!isEmail(state.email)) {
-      return dispatch({
+  const handleLogin = async () => {
+    const payload: LoginData = {
+      email: state.email,
+      password: state.password,
+    };
+
+    const { error, errorType, token } = await LoginApi.post(payload);
+
+    if (error) {
+      dispatch({
         type: 'loginFailed',
-        payload: 'Incorrect email or password',
+        payload: errorType,
       });
+
+      return;
+    }
+
+    if (token) {
+      auth.storeToken(token);
     }
 
     dispatch({
@@ -103,11 +118,11 @@ const Login = () => {
     });
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent) => {
-    if (event.keyCode === 13 || event.which === 13) {
-      state.isButtonDisabled || handleLogin();
-    }
-  };
+  // const handleKeyPress = (event: React.KeyboardEvent) => {
+  //   if (event.keyCode === 13 || event.which === 13) {
+  //     state.isButtonDisabled || handleLogin();
+  //   }
+  // };
 
   const handleEmailChange: React.ChangeEventHandler<HTMLInputElement> =
     event => {
@@ -135,18 +150,18 @@ const Login = () => {
       <span className='title'>Login</span>
 
       <InputText
-        type='email'
+        typeof='email'
         placeholder={placeholderText.email}
-        handleChange={handleEmailChange}
+        onChange={handleEmailChange}
       />
       <InputText
-        type='password'
+        typeof='password'
         placeholder={placeholderText.password}
-        handleChange={handlePasswordChange}
+        onChange={handlePasswordChange}
       />
 
       <Button
-        value='login'
+        defaultValue='login'
         isDisabled={state.isButtonDisabled}
         onClick={handleLogin}
       />

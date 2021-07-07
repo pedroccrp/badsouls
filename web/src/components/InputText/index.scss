@@ -1,15 +1,23 @@
 @import '/src/styles/base.scss';
 
-.input-field {
+.input-field-container {
   width: 60%;
+
+  position: relative;
+
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
 
   color: $color-inputs;
   background-color: transparent;
 
+  text-align: center;
+
   border: 0;
   border-bottom: 2px solid $color-lines;
-
-  text-align: center;
 }
 
 .input-field:focus {
@@ -22,4 +30,41 @@
 
 .input-field::placeholder {
   color: $color-placeholders;
+}
+
+.input-field-tooltip {
+  position: absolute;
+
+  opacity: 0;
+
+  top: 0;
+  left: 100%;
+
+  width: 50%;
+  height: fit-content;
+
+  min-height: 100%;
+
+  transition: 0.2s;
+}
+
+.input-field-tooltip {
+  display: flex;
+
+  flex-direction: column;
+
+  .input-field-tooltip-text {
+    font-size: 1.2rem;
+
+    text-align: left;
+
+    color: $color-text-tooltip;
+
+    margin: auto 0;
+    padding-left: 2rem;
+  }
+}
+
+.input-field:focus + .input-field-tooltip {
+  opacity: 1;
 }

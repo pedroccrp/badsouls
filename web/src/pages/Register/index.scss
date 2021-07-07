@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-#register-form span {
+#register-form .form-title {
   text-align: center;
   font-size: 3rem;
 
@@ -21,6 +21,18 @@
   padding-bottom: 1rem;
 }
 
+.input-field-error {
+  border-color: $color-lines-error;
+}
+
 .button {
   margin-top: 4rem;
+}
+
+.helper-container {
+  margin-top: 3rem;
+}
+
+.helper-text {
+  color: $color-text-warning;
 }

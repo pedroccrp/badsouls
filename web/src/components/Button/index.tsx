@@ -2,20 +2,19 @@ import React from 'react';
 
 import './index.scss';
 
-type ButtonProps = {
-  value?: string;
+type Props = {
   isDisabled?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
-};
+} & React.HTMLAttributes<HTMLInputElement>;
 
-const Button = (props: ButtonProps) => {
+const Button = (props: Props) => {
+  const { isDisabled, ...buttonAttributes } = props;
+
   return (
     <input
+      {...buttonAttributes}
       className='button'
       type='button'
-      value={props.value ? props.value : 'default'}
-      onClick={props.onClick}
-      disabled={props.isDisabled}
+      disabled={isDisabled}
     />
   );
 };
