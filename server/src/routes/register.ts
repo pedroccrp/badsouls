@@ -42,6 +42,6 @@ const router = Router();
  *
  *
  */
-router.post('/', registerController.registerUser);
+router.post('/register', registerController.registerUser);
 
 export default router;

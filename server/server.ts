@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 
-import app from './src/app';
-import database from './src/database';
+import app from 'src/app';
+import database from 'src/database';
 
 dotenv.config({
   path: './src/.env',

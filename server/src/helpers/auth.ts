@@ -1,7 +1,8 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-import { UserDocument } from '../models/user';
+import { UserDocument } from 'src/models/user';
+import { JwtUserData } from 'src/types/auth';
 
 const hashPassword = (password: string, saltRounds: number = 10): string => {
   return bcrypt.hashSync(password, saltRounds);
@@ -21,14 +22,13 @@ const generateToken = (user: UserDocument): string => {
     throw new Error('JWT_SECRET is not defined in the environment');
   }
 
-  const token = jwt.sign(
-    {
-      _id: user._id,
-      email: user.email,
-      username: user.username,
-    },
-    secret,
-  );
+  const data: JwtUserData = {
+    _id: user._id,
+    email: user.email,
+    username: user.username,
+  };
+
+  const token = jwt.sign(data, secret);
 
   return token;
 };

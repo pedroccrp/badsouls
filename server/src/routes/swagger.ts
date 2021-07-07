@@ -9,6 +9,6 @@ const router = Router();
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
-router.use('/', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+router.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 export default router;
